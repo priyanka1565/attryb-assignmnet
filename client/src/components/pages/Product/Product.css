@@ -7,7 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.main_div1 {
+.main_div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,17 +15,17 @@
     background: #32242a;
 }
 
-.box1 {
+.box {
     position: relative;
     width: 380px;
-    height: 700px;
+    height: 420px;
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
 
 }
 
-.box1::before {
+.box::before {
     content: '';
     position: absolute;
     top: -50px;
@@ -42,7 +42,7 @@
 
 }
 
-.box1::after {
+.box::after {
     content: '';
     position: absolute;
     top: -50px;
@@ -60,13 +60,13 @@
     animation-delay: -3s
 }
 
-.bordreLine1 {
+.bordreLine {
     position: absolute;
     top: 0;
     inset: 0;
 }
 
-.bordreLine1::before {
+.bordreLine::before {
     content: '';
     position: absolute;
     top: -50px;
@@ -96,7 +96,7 @@
 
 }
 
-.box1 form {
+.box form {
     position: absolute;
     inset: 4px;
     background: #222;
@@ -108,7 +108,7 @@
 
 }
 
-.box1 form h2 {
+.box form h2 {
     color: #fff;
     font-weight: 500;
     text-align: center;
@@ -116,7 +116,7 @@
 
 }
 
-.box1 form .inputBox1 {
+.box form .inputBox {
     position: relative;
     width: 300px;
     margin-top: 35px;
@@ -124,7 +124,7 @@
 
 }
 
-.box1 form .inputBox1 input {
+.box form .inputBox input {
     position: relative;
     width: 100%;
     padding: 20px 10px 10px;
@@ -138,7 +138,7 @@
     z-index: 10;
 }
 
-.box1 form .inputBox1 span {
+.box form .inputBox span {
     position: absolute;
     left: 0;
     padding: 20px 10px 10px;
@@ -149,14 +149,14 @@
 
 }
 
-.box1 form .inputBox1 input:valid~span,
-.box1 form .inputBox1 input:focus~span {
+.box form .inputBox input:valid~span,
+.box form .inputBox input:focus~span {
     color: #fff;
     font-size: 0.75em;
     transform: translateY(-34px);
 }
 
-.box1 form .inputBox1 i {
+.box form .inputBox i {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -169,33 +169,33 @@
     pointer-events: none;
 }
 
-.box1 form .inputBox1 input:valid~i,
-.box1 form .inputBox1 input:focus~i {
+.box form .inputBox input:valid~i,
+.box form .inputBox input:focus~i {
     height: 44px;
 
 }
 
-.box1 form .links1 {
+.box form .links {
     display: flex;
     justify-content: space-between;
 
 
 }
 
-.box1 form .links1 a {
+.box form .links a {
     margin: 10px 0px;
     font-size: 0.75em;
     color: #8f8f8f;
     text-decoration: none;
 }
 
-.box1 form .links a:hover,
-.box1 form .links a:nth-child(2) {
+.box form .links a:hover,
+.box form .links a:nth-child(2) {
     color: #fff;
 
 }
 
-.box1 form input[type="submit"] {
+.box form input[type="submit"] {
     border: none;
     outline: none;
     padding: 9px 25px;
@@ -207,6 +207,6 @@
     margin-top: 10px;
 }
 
-.box1 form .inputBox input[type="submit"] {
+.box form .inputBox input[type="submit"] {
     opacity: 0.8;
 }
