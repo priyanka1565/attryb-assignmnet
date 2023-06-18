@@ -32,9 +32,7 @@ const SignupForm = () => {
             console.log(arr)
 
             localStorage.setItem("user_data", JSON.stringify(arr));
-            navigate("/dashboard");
-
-
+            navigate("/");
         }
         else {
             toast("please enter Valid details")

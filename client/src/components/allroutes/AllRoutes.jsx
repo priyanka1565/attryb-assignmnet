@@ -4,6 +4,9 @@ import Login from '../pages/login/Login';
 import SignupForm from '../pages/signup/Signup';
 import CarAdd from '../pages/Product/CarAdd';
 import GetCar from '../pages/Product/GetCar';
+import Edit_Car from '../pages/Product/EditCar';
+import CreateOEM from '../pages/OEM/AddOEM';
+import SearchOEM from '../pages/OEM/SearchOEM';
 
 
 const AllRoutes = () => {
@@ -14,8 +17,10 @@ const AllRoutes = () => {
         <Route path='/signup' element={<SignupForm />} />
         <Route path='/addcar' element={<CarAdd />} />
         <Route path='/getcar' element={<GetCar />} />
-        
-          </Routes>
+        <Route path='/edit-car' element={<Edit_Car />} />
+        <Route path='/add-oem' element={<CreateOEM />} />
+        <Route path='/search-oem' element={<SearchOEM/>} />
+        </Routes>
     </div>
   )
 }

@@ -3,8 +3,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "./Product.css"
 import axios from "axios"
-import {useNavigate} from "react-router-dom"
-const CreateSeat = () => {
+import { useLocation } from 'react-router-dom';
+const Edit_Car = () => {
 
     const formData = {
         image: "",
@@ -12,15 +12,23 @@ const CreateSeat = () => {
         description: ""
     }
 
-    const navigate = useNavigate();
-
     const [getinput, Setinput] = useState(formData);
+    // get id from location 
+    const location = useLocation();
+    const { id } = location.state;
+    console.log(id, "locat_id")
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { name, value } = e.target;
         Setinput({ ...getinput, [name]: value })
     };
+
+    if (id) {
+        getinput["_id"] = id;
+    }
+
+    console.log(getinput,"getinput")
 
     const craeteSeat = async () => {
         if (!getinput?.image) {
@@ -34,7 +42,7 @@ const CreateSeat = () => {
         }
         else {
             try {
-                let url = "https://atrryb-backend.onrender.com/buycars/add_car_detail"
+                let url = "https://atrryb-backend.onrender.com/buycars/update_car_detail"
                 const config = {
                     'Content-Type': 'application/json',
                     "Access-Control-Allow-Origin": "*"
@@ -43,7 +51,6 @@ const CreateSeat = () => {
                 axios.post(url, getinput, { headers: config }).then((res) => {
                     if (res) {
                         toast.success(res?.data?.message)
-                        navigate("/getcar")
                     }
                 }).catch((err) => {
                     console.log(err, "err")
@@ -61,7 +68,7 @@ const CreateSeat = () => {
                 <div className="box">
                     <span className="bordreLine"></span>
                     <form >
-                        <h2>Add Car Detail</h2>
+                        <h2>Edit Car Detail</h2>
                         <div className="inputBox">
                             <input
                                 type="text"
@@ -102,4 +109,4 @@ const CreateSeat = () => {
     )
 }
 
-export default CreateSeat
+export default Edit_Car

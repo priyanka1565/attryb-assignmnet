@@ -11,13 +11,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let mail = "admin@gmail.com";
-        let pass = "123456789";
-        if (email === mail && password === pass) {
-            navigate("/signup", { state: { password, email } });
-        } else {
-            toast("please enter Valid details");
-        }
+        navigate("/add-oem");
     };
 
     return (
