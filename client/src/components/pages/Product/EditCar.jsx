@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import "./Product.css"
 import axios from "axios"
 import { useLocation } from 'react-router-dom';
 import {
@@ -123,6 +122,7 @@ const Edit_Car = () => {
                             }}>
                             Submit
                         </Button>
+                        <ToastContainer/>
                     </Stack>
 
                 </Box>

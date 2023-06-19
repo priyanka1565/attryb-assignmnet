@@ -15,16 +15,32 @@ import {
 } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-            navigate("/add-oem", { state: { password, email } });
+        const storeUser = JSON.parse(localStorage.getItem("user_data")) || [];
+        if (storeUser && (storeUser.email === email) && storeUser.password === password) {
+            toast("login sucessfully")
+            navigate("/add-oem", { state: { password, email } })
+        } else {
+            // Invalid login credentials, display error message
+            toast('Invalid credentials');
+        }
+            
+    
+       
+        console.log(password,email)
+        
+    //navigate("/add-oem", { state: { password, email } })
+            
     };
 
     return (
@@ -49,11 +65,11 @@ const Login = () => {
                     <Stack spacing={4}>
                         <FormControl id="email">
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" />
+                            <Input type="email" value={email}  onChange={(e)=>setEmail(e.target.value)}/>
                         </FormControl>
                         <FormControl id="password">
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" />
+                            <Input type="password"  value={password} onChange={(e) => setPassword(e.target.value)} />
                         </FormControl>
                         <Stack spacing={10}>
                             <Stack
@@ -71,10 +87,13 @@ const Login = () => {
                                 }}>
                                 Sign in
                             </Button>
+                            <ToastContainer/>
                         </Stack>
                     </Stack>
                 </Box>
+                <ToastContainer/>
             </Stack>
+           
         </Flex>
     );
 }

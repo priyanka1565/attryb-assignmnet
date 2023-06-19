@@ -59,7 +59,7 @@ const GetCar = () => {
 
             <div >
                 <div>
-                    <h1>Online Seat Booking Application</h1>
+                    <h1>Car Deatails Page</h1>
 
                 </div>
                 <div className='container'>

@@ -5,33 +5,28 @@ import "./Signup.css"
 import { useNavigate } from "react-router-dom";
 const SignupForm = () => {
     const [first_name, setFirstName] = useState("");
-    const [last_name, setLastName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
-    const [pincode, setPincode] = useState("");
+    const [password, setPassword] = useState("");
+    
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(first_name,last_name,phone,address,email);
-        if (phone && first_name && last_name && email && address) {
+        if (email && first_name && password && email) {
 
             let arr = JSON.parse(localStorage.getItem("user_data")) || [];
             let user_obj = {
                 f_name: first_name,
-                l_name: last_name,
+                password: password,
                 email: email,
-                address: address,
-                phone: phone,
-                pincode: pincode,
+                
+                
             }
+            console.log(user_obj)
 
-            arr.push(user_obj);
-            console.log(arr)
-
-            localStorage.setItem("user_data", JSON.stringify(arr));
+            localStorage.setItem("user_data", JSON.stringify(user_obj));
             navigate("/");
         }
         else {
@@ -53,36 +48,10 @@ const SignupForm = () => {
                                 value={first_name}
                             />
 
-                            <span>First Name</span>
+                            <span>Name</span>
                             <i></i>
                         </div>
-                        <div className="inputBox1">
-                            <input
-                                type="text"
-                                onChange={(e) => setLastName(e.target.value)}
-                                value={last_name}
-                            />
-                            <span>Last Name</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox1">
-                            <input
-                                type="text"
-                                onChange={(e) => setPhone(e.target.value)}
-                                value={phone}
-                            />
-                            <span>Phone Number</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox1">
-                            <input
-                                type="text"
-                                onChange={(e) => setAddress(e.target.value)}
-                                value={address}
-                            />
-                            <span>Address</span>
-                            <i></i>
-                        </div>
+                        
                         <div className="inputBox1">
                             <input
                                 type="text"
@@ -95,12 +64,14 @@ const SignupForm = () => {
                         <div className="inputBox1">
                             <input
                                 type="text"
-                                onChange={(e) => setPincode(e.target.value)}
-                                value={pincode}
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
                             />
-                            <span>Pincode</span>
+                            <span>Password</span>
                             <i></i>
                         </div>
+                        
+                        
                         <input type="submit" />
                     </form>
                     <ToastContainer />
