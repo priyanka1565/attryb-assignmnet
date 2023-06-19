@@ -77,7 +77,7 @@ const Login = () => {
                                 align={'start'}
                                 justify={'space-between'}>
                                 <Checkbox>Remember me</Checkbox>
-                                <Link color={'blue.400'}>Forgot password?</Link>
+                                <Link color={'blue.400'}>Create Account </Link>
                             </Stack>
                             <Button onClick={handleSubmit}
                                 bg={'blue.400'}

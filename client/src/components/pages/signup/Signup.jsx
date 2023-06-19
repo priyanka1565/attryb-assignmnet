@@ -27,7 +27,7 @@ const SignupForm = () => {
             console.log(user_obj)
 
             localStorage.setItem("user_data", JSON.stringify(user_obj));
-            navigate("/");
+            navigate("/login");
         }
         else {
             toast("please enter Valid details")
@@ -40,7 +40,7 @@ const SignupForm = () => {
                 <div className="box1">
                     <span className="bordreLine1"></span>
                     <form action="" onSubmit={handleSubmit}>
-                        <h2>User Entry Form</h2>
+                        <h2>User Registration Form</h2>
                         <div className="inputBox1">
                             <input
                                 type="text"
