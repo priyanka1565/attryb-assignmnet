@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import "./Product.css"
 import axios from "axios"
-import {useNavigate} from "react-router-dom"
-const CreateSeat = () => {
+import { useNavigate } from "react-router-dom"
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Link,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react';
+
+const CarAdd = () => {
 
     const formData = {
         image: "",
@@ -22,15 +36,15 @@ const CreateSeat = () => {
         Setinput({ ...getinput, [name]: value })
     };
 
-    const craeteSeat = async () => {
+    const CarDeatails = async () => {
         if (!getinput?.image) {
-            toast.error("Please Enter Seat Name")
+            toast.error("Please Enter Image")
         }
         else if (!getinput?.title) {
-            toast.error("Please Enter Seat Number")
+            toast.error("Please Enter Title")
         }
         else if (!getinput?.description) {
-            toast.error("Please Enter Seat Row Number")
+            toast.error("Please Enter Description")
         }
         else {
             try {
@@ -56,50 +70,59 @@ const CreateSeat = () => {
     }
     console.log(getinput, "ssssss");
     return (
-        <div>
-            <div className="main_div">
-                <div className="box">
-                    <span className="bordreLine"></span>
-                    <form >
-                        <h2>Add Car Detail</h2>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+        <Flex
+            minH={'100vh'}
+            align={'center'}
+            justify={'center'}
+            bg={useColorModeValue('gray.50', 'gray.800')}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+                <Stack align={'center'}>
+                    <Heading fontSize={'4xl'}>Add Car Details</Heading>
+                </Stack>
+                <Box
+                    rounded={'lg'}
+                    bg={useColorModeValue('white', 'gray.700')}
+                    boxShadow={'lg'}
+                    p={8}>
+                    <Stack spacing={4}>
+                        <FormControl id="email">
+                            <FormLabel>Image</FormLabel>
+                            <Input type="text"
                                 name='image'
                                 onChange={handleSubmit}
-                                value={getinput?.image}
-                            />
-                            <span>Image</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                value={getinput?.image} />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Title</FormLabel>
+                            <Input type="text"
                                 name="title"
                                 onChange={handleSubmit}
-                                value={getinput?.title}
-                            />
-                            <span>Title</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                value={getinput?.title} />
+                        </FormControl>
+                        <FormControl >
+                            <FormLabel>Description</FormLabel>
+                            <Input type="text"
                                 name='description'
                                 onChange={handleSubmit}
-                                value={getinput?.description}
-                            />
-                            <span>Description</span>
-                            <i></i>
-                        </div>
-                        <button type='button' onClick={craeteSeat}>Submit</button>
-                    </form>
+                                value={getinput?.description} />
+                        </FormControl>
+                        <Button
+                            type='button' onClick={CarDeatails}
+                            style={{
+                                height: "40px",
+                                width: "100px",
+                                border: "3px solid teal"
 
-                    <ToastContainer />
-                </div>
-            </div>
-        </div>
+                            }}>
+                            Submit
+                        </Button>
+                    </Stack>
+
+                </Box>
+            </Stack>
+        </Flex>
+
     )
 }
 
-export default CreateSeat
+export default CarAdd;

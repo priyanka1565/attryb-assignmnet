@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import "./OEM.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Link,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react';
 const CreateOEM = () => {
 
     const formData = {
@@ -29,7 +42,7 @@ const CreateOEM = () => {
 
     const craeteSeat = async () => {
         if (!getinput?.model_name) {
-            toast.error("Please Enter Seat Name")
+            toast.error("Please Enter Model Name")
         }
         else if (!getinput?.year_of_model) {
             toast.error("Please Enter Seat Number")
@@ -61,94 +74,98 @@ const CreateOEM = () => {
     }
     console.log(getinput, "ssssss");
     return (
-        <div>
-            <div className="main_div">
-                <div className="box">
-                    <span className="bordreLine"></span>
-                    <form >
-                        <h2>Add OEM Detail</h2>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+        <Flex
+            minH={'100vh'}
+            align={'center'}
+            justify={'center'}
+            bg={useColorModeValue('gray.50', 'gray.800')}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+                <Stack align={'center'}>
+                    <Heading fontSize={'4xl'}>Add OEM Detail</Heading>
+                    <Text fontSize={'lg'} color={'gray.600'}>
+                        to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+                    </Text>
+                </Stack>
+                <Box
+                    rounded={'lg'}
+                    bg={useColorModeValue('white', 'gray.700')}
+                    boxShadow={'lg'}
+                    p={8}>
+                    <Stack spacing={4}>
+                        <FormControl id="email">
+                            <FormLabel>Model Name</FormLabel>
+                            <Input type="text"
                                 name='model_name'
                                 onChange={handleSubmit}
                                 value={getinput?.model_name}
-                                placeholder='Enter Model Name'
-                            />
-                            <span>Model Name</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                placeholder='Enter Model Name'/>
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Year Of Model</FormLabel>
+                            <Input type="text"
                                 name="year_of_model"
                                 onChange={handleSubmit}
                                 value={getinput?.year_of_model}
-                            />
-                            <span>Year Of Model</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                placeholder='Enter Model Year' /> 
+                        </FormControl>
+                        <FormControl >
+                            <FormLabel>Price of new vehicle</FormLabel>
+                            <Input type="text"
                                 name='price_of_new_vehicle'
                                 onChange={handleSubmit}
                                 value={getinput?.price_of_new_vehicle}
-                            />
-                            <span>Price of new vehicle</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                            placeholder='Enter price of vehicle'/>
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>availablem colors</FormLabel>
+                            <Input type="text"
                                 name='available_colors'
                                 onChange={handleSubmit}
                                 value={getinput?.available_colors}
-                                placeholder='enter availablem colors'
-                            />
-                            <span>availablem colors</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                placeholder='Enter availablem colors' />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Mileage</FormLabel>
+                            <Input type="text"
                                 name='mileage'
                                 onChange={handleSubmit}
                                 value={getinput?.mileage}
-                                placeholder='enter mileage'
-                            />
-                            <span>Mileage</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                placeholder='Enter mileage' />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Power</FormLabel>
+                            <Input type="text"
                                 name='power'
                                 onChange={handleSubmit}
                                 value={getinput?.power}
-                                placeholder='enter power'
-                            />
-                            <span>Power</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
+                                placeholder='Enter power' />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Max speed</FormLabel>
+                            <Input type="text"
                                 name='max_speed'
                                 onChange={handleSubmit}
                                 value={getinput?.max_speed}
-                                placeholder='enter max speed'
-                            />
-                            <span>max speed</span>
-                            <i></i>
-                        </div>
-                        <button type='button' onClick={craeteSeat}>Submit</button>
-                    </form>
-
-                    <ToastContainer />
-                </div>
-            </div>
-        </div>
+                                placeholder='Enter max speed' />
+                        </FormControl>
+                        
+                        
+                        <Button
+                            type='button' onClick={craeteSeat}
+                            style={{
+                                height:"40px",
+                                width: "100px",
+                                border:"3px solid teal"
+                                
+                               }}>
+                            Submit
+                            </Button>
+                        </Stack>
+                    
+                </Box>
+            </Stack>
+        </Flex>
+        
     )
 }
 

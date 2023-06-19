@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Input } from '@chakra-ui/react';
+import { Button, ButtonGroup,Stack } from '@chakra-ui/react'
 
 const SearchOEM = () => {
     const [data, setData] = useState([]);
@@ -46,12 +48,21 @@ const SearchOEM = () => {
             </div>
             <div>
                 <div>
-                    <input type="text" placeholder='Search OEM' onChange={(e) => setSearchKey(e.target.value)} />
+                    <Input type="text"
+                        style={{
+                            width:"30%"
+                        }}
+                        placeholder='Search OEM' onChange={(e) => setSearchKey(e.target.value)} />
                 </div>
-                <div>
-                    <button onClick={getData}>Search</button>
-                    <button onClick={handleClick}>Add Second Hand Car Detail</button>
-                </div>
+                <br />
+                <Stack spacing={4} direction='row' align='center'>
+                    <Button colorScheme='teal' size='md' onClick={getData}>
+                        Search
+                    </Button>
+                    <Button colorScheme='teal' size='lg' onClick={handleClick}>
+                        Add Second Hand Car Detail
+                    </Button>
+                </Stack>
             </div>
             <div>
                 {data?.map((value) => {

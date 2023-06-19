@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./Login.css"
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Link,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react';
+
 import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
 
     const [password, setPassword] = useState("");
@@ -11,45 +24,58 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/add-oem");
+            navigate("/add-oem", { state: { password, email } });
     };
 
     return (
-        <div>
-            <div className="main_div">
-                <div className="box">
-                    <span className="bordreLine"></span>
-                    <form action="" onSubmit={handleSubmit}>
-                        <h2>Sign in</h2>
-                        <div className="inputBox">
-                            <input
-                                type="text"
-                                onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                            />
-
-                            <span>Email</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                type="text"
-                                onChange={(e) => setPassword(e.target.value)}
-                                value={password}
-                            />
-                            <span>Password</span>
-                            <i></i>
-                        </div>
-                        <div className="links">
-                            <a href="#">Forgot Password</a>
-                            <a href="./Signup">Signup</a>
-                        </div>
-                        <input type="submit" />
-                    </form>
-                    <ToastContainer />
-                </div>
-            </div>
-        </div>
+      
+        <Flex
+            minH={'100vh'}
+            align={'center'}
+            justify={'center'}
+            bg={useColorModeValue('gray.50', 'gray.800')}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+                <Stack align={'center'}>
+                    <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+                    <Text fontSize={'lg'} color={'gray.600'}>
+                        to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+                    </Text>
+                </Stack>
+                <Box
+                    rounded={'lg'}
+                    bg={useColorModeValue('white', 'gray.700')}
+                    boxShadow={'lg'}
+                    p={8}>
+                    <Stack spacing={4}>
+                        <FormControl id="email">
+                            <FormLabel>Email address</FormLabel>
+                            <Input type="email" />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Password</FormLabel>
+                            <Input type="password" />
+                        </FormControl>
+                        <Stack spacing={10}>
+                            <Stack
+                                direction={{ base: 'column', sm: 'row' }}
+                                align={'start'}
+                                justify={'space-between'}>
+                                <Checkbox>Remember me</Checkbox>
+                                <Link color={'blue.400'}>Forgot password?</Link>
+                            </Stack>
+                            <Button onClick={handleSubmit}
+                                bg={'blue.400'}
+                                color={'white'}
+                                _hover={{
+                                    bg: 'blue.500',
+                                }}>
+                                Sign in
+                            </Button>
+                        </Stack>
+                    </Stack>
+                </Box>
+            </Stack>
+        </Flex>
     );
 }
 
