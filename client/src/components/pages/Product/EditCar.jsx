@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios"
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 import {
     Flex,
     Box,
@@ -25,6 +26,8 @@ const Edit_Car = () => {
         description: ""
     }
 
+    const navigate = useNavigate();
+
     const [getinput, Setinput] = useState(formData);
     // get id from location 
     const location = useLocation();
@@ -41,7 +44,7 @@ const Edit_Car = () => {
         getinput["_id"] = id;
     }
 
-    console.log(getinput,"getinput")
+    console.log(getinput, "getinput")
 
     const EditCarDetails = async () => {
         if (!getinput?.image) {
@@ -63,7 +66,9 @@ const Edit_Car = () => {
 
                 axios.post(url, getinput, { headers: config }).then((res) => {
                     if (res) {
+                        navigate("/getcar")
                         toast.success(res?.data?.message)
+
                     }
                 }).catch((err) => {
                     console.log(err, "err")
@@ -122,7 +127,7 @@ const Edit_Car = () => {
                             }}>
                             Submit
                         </Button>
-                        <ToastContainer/>
+                        <ToastContainer />
                     </Stack>
 
                 </Box>

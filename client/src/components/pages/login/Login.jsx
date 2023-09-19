@@ -43,6 +43,10 @@ const Login = () => {
             
     };
 
+    const goToSignUp = () => {
+        navigate("/")
+    }
+
     return (
       
         <Flex
@@ -77,7 +81,10 @@ const Login = () => {
                                 align={'start'}
                                 justify={'space-between'}>
                                 <Checkbox>Remember me</Checkbox>
-                                <Link color={'blue.400'}>Create Account </Link>
+                                <Link
+                                    onClick={goToSignUp}
+                                    color={'blue.400'}>
+                                    Create Account </Link>
                             </Stack>
                             <Button onClick={handleSubmit}
                                 bg={'blue.400'}

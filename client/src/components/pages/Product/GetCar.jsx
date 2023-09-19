@@ -31,16 +31,17 @@ const GetCar = () => {
     }
 
     const handleDelete = async (id) => {
-        console.log(id,"id--------------delete")
+        console.log(id, "id--------------delete")
         try {
             let url = "https://atrryb-backend.onrender.com/buycars/delete_car_detail_id";
             const config = {
                 'Content-Type': 'application/json',
                 "Access-Control-Allow-Origin": "*"
             }
-            axios.post(url, {_id:id}, { headers: config }).then((res) => {
+            axios.post(url, { _id: id }, { headers: config }).then((res) => {
                 if (res) {
                     toast.success(res?.data?.message)
+                    window.location.reload()
                 }
             }).catch((err) => {
                 console.log(err, "err")
@@ -59,23 +60,25 @@ const GetCar = () => {
 
             <div >
                 <div>
-                    <h1>Car Deatails Page</h1>
-
+                    <h1>Car Deatails Page Add Car for view </h1>
                 </div>
                 <div className='container'>
                     {data?.map((value) => {
                         return (
-                            <div className='car_main'>
-                                <div className='getcar'><img src={value.image} alt="" /> </div>
-                                <div className='attri'>
-                                    <h2>{value?.title}</h2>
-                                    <p>{value?.description}</p>
-                                    <button onClick={() => handleEdit(value?._id)}>Edit</button>
-                                    <button onClick={() => handleDelete(value?._id)}>Delete</button>
-
-
+                            <div className="main_container">
+                                <div class="row">
+                                    <div class="column">
+                                        <div class="card">
+                                            <img src={value.image} alt="" />
+                                            <h3>{value?.title}</h3>
+                                            <p>{value?.description}</p>
+                                            <button class="button" onClick={() => handleEdit(value?._id)}>Edit</button>
+                                            <button class="button" onClick={() => handleDelete(value?._id)}>Delete</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
 
                         )
 

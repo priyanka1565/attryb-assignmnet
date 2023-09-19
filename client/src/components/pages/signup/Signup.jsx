@@ -1,13 +1,27 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Link,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react';
+
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Signup.css"
-import { useNavigate } from "react-router-dom";
-const SignupForm = () => {
+
+const Login = () => {
     const [first_name, setFirstName] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    const [email, setEmail] = useState("");
 
     const navigate = useNavigate();
 
@@ -21,11 +35,8 @@ const SignupForm = () => {
                 f_name: first_name,
                 password: password,
                 email: email,
-                
-                
             }
             console.log(user_obj)
-
             localStorage.setItem("user_data", JSON.stringify(user_obj));
             navigate("/login");
         }
@@ -34,52 +45,76 @@ const SignupForm = () => {
         }
 
     }
-    return (
-        <div>
-            <div className="main_div1">
-                <div className="box1">
-                    <span className="bordreLine1"></span>
-                    <form action="" onSubmit={handleSubmit}>
-                        <h2>User Registration Form</h2>
-                        <div className="inputBox1">
-                            <input
-                                type="text"
-                                onChange={(e) => setFirstName(e.target.value)}
-                                value={first_name}
-                            />
 
-                            <span>Name</span>
-                            <i></i>
-                        </div>
-                        
-                        <div className="inputBox1">
-                            <input
-                                type="text"
+    const goToSignIn = () => {
+        navigate("/login")
+    }
+    return (
+
+        <Flex
+            minH={'100vh'}
+            align={'center'}
+            justify={'center'}
+            bg={useColorModeValue('gray.50', 'gray.800')}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+                <Stack align={'center'}>
+                    <Heading fontSize={'4xl'}>User Registration Form</Heading>
+                    <Text fontSize={'lg'} color={'gray.600'}>
+                        to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+                    </Text>
+                </Stack>
+                <Box
+                    rounded={'lg'}
+                    bg={useColorModeValue('white', 'gray.700')}
+                    boxShadow={'lg'}
+                    p={8}>
+                    <Stack spacing={4}>
+                        <FormControl id="email">
+                            <FormLabel>Name</FormLabel>
+                            <Input type="text"
+                                onChange={(e) => setFirstName(e.target.value)}
+                                value={first_name} />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Email</FormLabel>
+                            <Input type="text"
                                 onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                            />
-                            <span>Email</span>
-                            <i></i>
-                        </div>
-                        <div className="inputBox1">
-                            <input
-                                type="text"
+                                value={email} />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Password</FormLabel>
+                            <Input type="text"
                                 onChange={(e) => setPassword(e.target.value)}
-                                value={password}
-                            />
-                            <span>Password</span>
-                            <i></i>
-                        </div>
-                        
-                        
-                        <input type="submit" />
-                    </form>
-                    <ToastContainer />
-                </div>
-            </div>
-        </div>
+                                value={password} />
+                        </FormControl>
+                        <Stack spacing={10}>
+                            <Stack
+                                direction={{ base: 'column', sm: 'row' }}
+                                align={'start'}
+                                justify={'space-between'}>
+                                <Checkbox>Remember me</Checkbox>
+                                <Link
+                                    color={'blue.400'}
+                                    onClick={goToSignIn}
+                                >Already have a account</Link>
+                            </Stack>
+                            <Button onClick={handleSubmit}
+                                bg={'blue.400'}
+                                color={'white'}
+                                _hover={{
+                                    bg: 'blue.500',
+                                }}>
+                                Sign Up
+                            </Button>
+                            <ToastContainer />
+                        </Stack>
+                    </Stack>
+                </Box>
+                <ToastContainer />
+            </Stack>
+
+        </Flex>
     );
 }
 
-export default SignupForm;
-;
+export default Login
