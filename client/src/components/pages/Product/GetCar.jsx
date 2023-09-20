@@ -67,7 +67,7 @@ const GetCar = () => {
                         return (
                             <div className="main_container">
                                 <div class="row">
-                                    <div class="column">
+                                    <div class="column" >
                                         <div class="card">
                                             <img src={value.image} alt="" />
                                             <h3>{value?.title}</h3>
