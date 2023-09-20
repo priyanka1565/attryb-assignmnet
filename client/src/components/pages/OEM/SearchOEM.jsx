@@ -56,18 +56,19 @@ const SearchOEM = () => {
         <div >
             <div className="container">
                 <div>
-                    <h1>Search OEM</h1>
+                    <h1 className='head-1'>Search OEM</h1>
                 </div>
                 <div>
                     <div>
                         <Input type="text"
                             style={{
-                                width: "30%"
+                                width: "100%",
+                                marginTop:"40px"
                             }}
                             placeholder='Search OEM' onChange={(e) => setSearchKey(e.target.value)} />
                     </div>
                     <br />
-                    <Stack spacing={4} direction='row' align='center'>
+                    <Stack spacing={4} direction='row' align='center' style={{marginBottom:"20px"}}>
                         <Button colorScheme='teal' size='md' onClick={getData}>
                             Search
                         </Button>
@@ -75,16 +76,21 @@ const SearchOEM = () => {
                             Add Second Hand Car Detail
                         </Button>
                     </Stack>
+                    <h1 style={{
+                        fontFamily: "sans-serif",
+                        fontSize: "700",
+                        fontWeight:"bold"
+                    }}>OEM Details Page</h1>
                 </div>
             </div>
             <div>
                 {data?.map((value) => {
                     return (
-                        <div>
+                        <div> 
                             <TableContainer>
-                                <Table variant='striped' colorScheme='teal'>
+                                <Table variant='striped' colorScheme='teal' >
                                     <TableCaption>OEM Detail</TableCaption>
-                                    <Thead>
+                                    <Thead border='5px' borderColor='gray.200'>
                                         <Tr>
                                             <Th>Model Name</Th>
                                             <Th>Year Of Model</Th>
