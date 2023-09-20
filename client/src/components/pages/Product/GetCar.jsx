@@ -60,7 +60,7 @@ const GetCar = () => {
 
             <div >
                 <div>
-                    <h1>Car Deatails Page Add Car for view </h1>
+                    <h1>Second Hand Car Details Page </h1>
                 </div>
                 <div className='container'>
                     {data?.map((value) => {
