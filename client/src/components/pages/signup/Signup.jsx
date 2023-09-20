@@ -83,7 +83,7 @@ const Login = () => {
                         </FormControl>
                         <FormControl id="password">
                             <FormLabel>Password</FormLabel>
-                            <Input type="text"
+                            <Input type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password} />
                         </FormControl>
